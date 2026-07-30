@@ -1,0 +1,4 @@
+title: plasma
+type: pacmanList
+pkgs:
+  - plasma
