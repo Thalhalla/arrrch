@@ -13,7 +13,7 @@ type Props = {
 export default function App({name = 'Stranger', installCustom, installFile}: Props) {
 	useEffect(() => {
 		if (installCustom) {
-			const listPath = installFile ? path.resolve(installFile) : path.join(process.cwd(), 'pkgs/custom.list');
+			const listPath = installFile ? path.resolve(installFile) : path.join(process.cwd(), 'examples/custom.list');
 			try {
 				const pkgs = fs.readFileSync(listPath, 'utf8').split('\n').filter(Boolean).join(' ');
 				const child = spawn('sudo', ['pacman', '-S', ...pkgs.split(' ')], {stdio: 'inherit'});

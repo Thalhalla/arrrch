@@ -7,7 +7,7 @@ import App from './app.js';
 const cli = meow(
 	`
 	Usage
-	  $ tmy-ink-cli [command]
+	  $ arrrch [command]
 
 	Commands
 	  install-custom [file]  Installs custom packages via pacman.
@@ -16,8 +16,8 @@ const cli = meow(
 		--name  Your name
 
 	Examples
-	  $ tmy-ink-cli --name=Jane
-	  $ tmy-ink-cli install-custom path/to/list
+	  $ arrrch --name=Jane
+	  $ arrrch install-custom path/to/list
 `,
 	{
 		importMeta: import.meta,

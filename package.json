@@ -1,5 +1,5 @@
 {
-	"name": "tmy-ink-cli",
+	"name": "arrrch",
 	"version": "0.0.0",
 	"license": "MIT",
 	"bin": "dist/cli.js",
