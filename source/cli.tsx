@@ -7,14 +7,17 @@ import App from './app.js';
 const cli = meow(
 	`
 	Usage
-	  $ tmy-ink-cli
+	  $ tmy-ink-cli [command]
+
+	Commands
+	  install-custom [file]  Installs custom packages via pacman.
 
 	Options
 		--name  Your name
 
 	Examples
 	  $ tmy-ink-cli --name=Jane
-	  Hello, Jane
+	  $ tmy-ink-cli install-custom path/to/list
 `,
 	{
 		importMeta: import.meta,
@@ -26,4 +29,7 @@ const cli = meow(
 	},
 );
 
-render(<App name={cli.flags.name} />);
+const isInstallCustom = cli.input[0] === 'install-custom';
+const installFile = cli.input[1];
+
+render(<App name={cli.flags.name} installCustom={isInstallCustom} installFile={installFile} />);
