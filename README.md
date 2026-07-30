@@ -1,45 +1,48 @@
 # arrrch
 
-A CLI utility built with [Ink](https://github.com/wadymg/ink) and [meow](https://github.com/sindresorhus/meow).
+A powerful CLI utility built with [Ink](https://github.com/wadymg/ink) and [meow](https://github.com/sindresorhus/meow).
 
-## Installation
+## 🚀 Getting Started
 
-To install this utility globally on your system:
+### Prerequisites
 
-1. Clone the repository:
+Ensure you have [pnpm](https://pnpm.io/installation) installed on your system:
+```bash
+corepack enable
+corepack prepare pnpm@latest --activate
+```
+
+### Installation
+
+To install `arrrch` globally as a CLI utility:
+
+1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Thalhalla/arrrch.git
    cd arrrch
    ```
 
-2. Install dependencies:
+2. **Install dependencies & Build**
+   Using pnpm for fast, disk-efficient package management:
    ```bash
    pnpm i
-   ```
-
-3. Build the project:
-   ```bash
    pnpm build
    ```
 
-4. Link the package globally:
+3. **Link globally**
+   Make the command available system-wide:
    ```bash
-   npm link
+   pnpm link --global
    ```
 
+## 🛠 Usage
 
-## Usage
+Once installed, you can invoke the utility using the `arrrch` command.
 
-After installation, you can use the `arrrch` command:
+### Custom Package Installation
+Efficiently install system packages via `pacman`.
 
-### Basic install
+**Using a custom list:**
 ```bash
-arrrch install-custom
 ```
-
-### Install Custom Packages
-This command installs packages via `pacman` using a list file.
-```bash
-arrrch install-custom [path/to/list]
-```
-If no file is provided, it defaults to `pkgs/custom.list`.
+arrrch install-custom /path/to/your/packages.list
