@@ -7,15 +7,24 @@ import {spawn} from 'node:child_process';
 type Props = {
 	name: string | undefined;
 	installCustom?: boolean;
-	installFile?: string;
+	installFiles?: string[];
 };
 
-export default function App({name = 'Stranger', installCustom, installFile}: Props) {
+export default function App({name = 'Arrrch', installCustom, installFiles}: Props) {
 	useEffect(() => {
 		if (installCustom) {
-			const listPath = installFile ? path.resolve(installFile) : path.join(process.cwd(), 'examples/custom.list');
+			const paths = installFiles && installFiles.length > 0
+				? installFiles.map(f => path.resolve(f))
+				: [path.join(process.cwd(), 'examples/custom.list')];
+
 			try {
-				const pkgs = fs.readFileSync(listPath, 'utf8').split('\n').filter(Boolean).join(' ');
+				const pkgs = paths
+					.map(p => fs.readFileSync(p, 'utf8'))
+					.join('\n')
+					.split('\n')
+					.filter(Boolean)
+					.join(' ');
+
 				const child = spawn('sudo', ['pacman', '-S', ...pkgs.split(' ')], {stdio: 'inherit'});
 				child.on('exit', (code) => {
 					if (code !== 0) console.error(`Installation failed with code ${code}`);
@@ -24,11 +33,11 @@ export default function App({name = 'Stranger', installCustom, installFile}: Pro
 				console.error(`Error reading file: ${error}`);
 			}
 		}
-	}, [installCustom, installFile]);
+	}, [installCustom, installFiles]);
 
 	return (
 		<Text>
-			Hello, <Text color="green">{name}</Text>
+			Running, <Text color="green">{name}</Text>
 		</Text>
 	);
 }

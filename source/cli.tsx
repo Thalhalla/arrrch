@@ -30,6 +30,6 @@ const cli = meow(
 );
 
 const isInstallCustom = cli.input[0] === 'install-custom';
-const installFile = cli.input[1];
+const installFiles = isInstallCustom ? cli.input.slice(1) : undefined;
 
-render(<App name={cli.flags.name} installCustom={isInstallCustom} installFile={installFile} />);
+render(<App name={cli.flags.name} installCustom={isInstallCustom} installFiles={installFiles} />);
